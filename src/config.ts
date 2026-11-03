@@ -1,10 +1,10 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = "I'm watching you Ø-Ø";
+export const SITE_TITLE = "Selene Tan";
 export const AUTHOR_NAME = "Selene";
 export const AUTHOR_INITIAL = "ST";
-export const SITE_DESCRIPTION = "Selene's personal website is watching you back.";
+export const SITE_DESCRIPTION = "Selene Tan's personal website.";
 export const GENERATE_SLUG_FROM_TITLE = true;
 export const TRANSITION_API = true;
 

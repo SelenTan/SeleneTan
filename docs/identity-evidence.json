@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "reference_lock_version": "v1",
+  "source_strategy_locked": true,
+  "review_scope": "home_sections",
+  "viewports": {
+    "desktop": { "width": 1774, "height": 887 },
+    "ultrawide": { "width": 2200, "height": 1200 },
+    "mobile": { "width": 390, "height": 844 }
+  },
+  "fresh_review": "docs/fresh-review.md",
+  "fresh_review_mode": "independent",
+  "final_status": "not verified",
+  "phase": "asset_split_pending_acceptance",
+  "approved_reference_changes": [
+    "Remove Notes navigation and site section.",
+    "Remove manual dark-mode control; follow device prefers-color-scheme and react to changes without stored manual preferences."
+  ],
+  "sections": [
+    {
+      "id": "about",
+      "reference": {
+        "path": "references/locked/v1/01-about.png",
+        "sha256": "d91d84a02e3db3d6faf59cfef84e494563f729ae8a3220416b4366ebb991cd91"
+      },
+      "render_contract": "docs/restoration-plan.md",
+      "topology": {
+        "kind": "shared",
+        "shared_with": ["education", "experience"],
+        "reason": "profile-reading-shell: same header, identity sidebar, column geometry and responsive stacking; paragraph flow remains specific to About Me"
+      },
+      "captures": {},
+      "gates": {},
+      "status": "not verified"
+    },
+    {
+      "id": "education",
+      "reference": {
+        "path": "references/locked/v1/02-education.png",
+        "sha256": "187662dd8ee350a2f22fc18ce849d82aacbadc23e9dbd509c7bef352d1f96459"
+      },
+      "render_contract": "docs/restoration-plan.md",
+      "topology": {
+        "kind": "shared",
+        "shared_with": ["about", "experience"],
+        "reason": "profile-reading-shell: same header, identity sidebar, column geometry and responsive stacking; two education records retain their own date alignment"
+      },
+      "captures": {},
+      "gates": {},
+      "status": "not verified"
+    },
+    {
+      "id": "experience",
+      "reference": {
+        "path": "references/locked/v1/03-experience.png",
+        "sha256": "c0137d70a9a939c1c6ebfa5ae33fdd69d05a13db9d0040ffceb425162ffba893"
+      },
+      "render_contract": "docs/restoration-plan.md",
+      "topology": {
+        "kind": "shared",
+        "shared_with": ["about", "education"],
+        "reason": "profile-reading-shell: same header, identity sidebar, column geometry and responsive stacking; role and institution hierarchy remain specific to this research record"
+      },
+      "captures": {},
+      "gates": {},
+      "status": "not verified"
+    }
+  ]
+}
