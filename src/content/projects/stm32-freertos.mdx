@@ -5,10 +5,35 @@ pubDate: "2025-12-01"
 period: "Oct – Dec 2025"
 badge: "Individual project"
 category: "Embedded systems & hardware"
+github: "https://github.com/SelenTan/stm32-freertos-snake"
 cvBullets:
   - "Designed and implemented a real time Snake game on STM32, integrating an analog joystick, OLED display, physical controls, ADC with DMA and STM32 HAL drivers."
   - "Architected the firmware as coordinated FreeRTOS tasks for input processing, game logic, display rendering and shared state management using queues, semaphores and mutexes."
   - "Validated scheduling behaviour and processor utilisation with Segger SystemView and CPU load measurements, confirming reliable timing and sufficient processing headroom for responsive gameplay."
 ---
 
+import { url as siteUrl } from "../../config";
+
 Used a Snake game to exercise an analogue joystick, OLED, ADC with DMA and HAL drivers. Coordinated input, game logic and rendering with FreeRTOS tasks, queues, semaphores and mutexes. Checked scheduling and processor utilisation with Segger SystemView and CPU-load measurements.
+
+## Hardware demo
+
+<video
+    controls
+    playsInline
+    preload="metadata"
+    className="block w-full max-w-2xl"
+    aria-label="Silent gameplay demo on the STM32 development board"
+>
+    <source src={siteUrl("projects/stm32-freertos/freertos-gameplay-demo.mp4")} type="video/mp4" />
+</video>
+
+The silent demo shows the analogue joystick controlling the game on the OLED display.
+
+## Firmware architecture and timing
+
+![FreeRTOS task architecture for joystick input, game logic and OLED rendering](./stm32-freertos/task-architecture.png)
+
+![SEGGER SystemView trace showing application tasks and SysTick](./stm32-freertos/systemview-schedule.png)
+
+During recorded gameplay, the input task took approximately 54–109 µs to execute against a nominal 20 ms sampling interval.
