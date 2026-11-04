@@ -2,7 +2,7 @@
 
 Personal portfolio for Selene Tan, an embedded software and firmware engineer. Built with Astro, Tailwind CSS, and DaisyUI.
 
-[GitHub Pages address](https://selentan.github.io/im-watching-you/)
+[GitHub Pages address](https://selentan.github.io/SeleneTan/)
 
 ## Site sections
 
