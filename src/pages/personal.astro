@@ -7,15 +7,13 @@ const posts = (await getCollection("personal")).sort((a, b) => b.data.pubDate.va
 <BaseLayout title="Personal | Selene Tan">
     <section class="career-section">
         <h1>Personal</h1>
-        <p>I'm watching you Ø-Ø</p>
-        <h2>Notice Board</h2>
         <p>Stories, experiments and little discoveries from outside work.</p>
         <div class="personal-cat">
             <img src={url("tj11.jpg")} alt="Tian Ju the ginger cat" width="220" height="220" />
             <div><h2>Meet my cat</h2><p>His name is a mystery that no one fully agrees on.</p></div>
         </div>
         <p class="personal-social"><a href="https://www.instagram.com/labibibibibibu/">Instagram</a>
-            <button type="button" class="secret-social-link">WhatsApp surprise</button>
+            <button type="button" class="secret-social-link">WhatsApp</button>
             <span role="status"></span>
         </p>
     </section>
