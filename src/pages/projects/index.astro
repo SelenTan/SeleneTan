@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectEntry from "../../components/ProjectEntry.astro";
+const projects = await getCollection("projects");
+const groups = ["Machine learning", "Security & applications", "Embedded systems & hardware"] as const;
+const featured = ["vision-language-model-certification", "multilingual-sentiment", "sketch-recognition", "trading-signals", "breastmnist-classification", "security-navigation-lab"];
+---
+<BaseLayout title="Research & Engineering | Selene Tan">
+    <section class="career-section">
+        <h1>Research & Engineering</h1>
+        <p>Projects in machine learning, embedded systems and security.</p>
+    </section>
+    {groups.map((group) => (
+        <section class="career-section">
+            <h2>{group}</h2>
+            {projects.filter(({ data }) => data.category === group)
+                .sort((a, b) => {
+                    const aRank = featured.indexOf(a.slug);
+                    const bRank = featured.indexOf(b.slug);
+                    return (aRank < 0 ? featured.length : aRank) - (bRank < 0 ? featured.length : bRank)
+                        || b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+                })
+                .map(({ slug, data }) => (
+                    <ProjectEntry slug={slug} data={data} />
+                ))}
+        </section>
+    ))}
+</BaseLayout>

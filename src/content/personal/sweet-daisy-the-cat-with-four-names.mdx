@@ -6,6 +6,8 @@ heroImage: "/blog2.jpg"
 tags: ["cat", "life", "family"]
 ---
 
+import { url as assetUrl } from '../../config';
+
 My cat is a ginger cat, and his name is yet a mystery to find out.
 
 In Chinese, his name sounds like **Tian Ju**. The important thing to know is that Chinese has many words that sound the same but use different characters, and different characters can completely change the meaning. So one cat name can quietly become a family debate.
@@ -34,9 +36,9 @@ So maybe Sweet Daisy belongs to all of us. Or maybe, more accurately, we all bel
 
 He arrived with one name and accidentally collected four meanings, three arguments, and an entire household of staff. Not bad for a ginger cat. I guess he never really cared about what his name is anyway.
 
-<div class="not-prose mt-8 grid grid-cols-2 gap-4">
-  <img src="/im-watching-you/tj8.jpg" alt="Sweet Daisy resting quietly" class="h-64 w-full rounded-ac-lg object-cover" />
-  <img src="/im-watching-you/tj9.jpg" alt="Sweet Daisy looking comfortable at home" class="h-64 w-full rounded-ac-lg object-cover" />
-  <img src="/im-watching-you/tj4.jpg" alt="Sweet Daisy showing his ginger-cat charm" class="h-64 w-full rounded-ac-lg object-cover" />
-  <img src="/im-watching-you/tj6.jpg" alt="Sweet Daisy being Sweet Daisy" class="h-64 w-full rounded-ac-lg object-cover" />
+<div className="not-prose mt-8 grid grid-cols-2 gap-4">
+  <img src={assetUrl("tj8.jpg")} alt="Sweet Daisy resting quietly" className="h-64 w-full rounded-ac-lg object-cover" />
+  <img src={assetUrl("tj9.jpg")} alt="Sweet Daisy looking comfortable at home" className="h-64 w-full rounded-ac-lg object-cover" />
+  <img src={assetUrl("tj4.jpg")} alt="Sweet Daisy showing his ginger-cat charm" className="h-64 w-full rounded-ac-lg object-cover" />
+  <img src={assetUrl("tj6.jpg")} alt="Sweet Daisy being Sweet Daisy" className="h-64 w-full rounded-ac-lg object-cover" />
 </div>

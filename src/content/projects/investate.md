@@ -1,8 +1,8 @@
 ---
-title: "Investate"
+title: "Investate: Property Application Prototype"
+category: "Security & applications"
 description: "A property app prototype built for the Imperial FinTech Hackathon."
 pubDate: "Apr 28 2026"
-heroImage: "/project3.jpg"
 badge: "hackathon"
 github: "https://github.com/Supore123/Investate"
 tags: ["hackathon", "fintech", "property"]

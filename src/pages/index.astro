@@ -1,68 +1,41 @@
 ---
+import { getEntry } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CareerSections from "../components/CareerSections.astro";
 import { url } from "../config";
+
+const featuredSlugs = [
+    "stm32-freertos",
+    "indoor-visible-light-positioning",
+    "solar-planter",
+    "vision-language-model-certification",
+] as const;
+
+const featuredProjects = await Promise.all(
+    featuredSlugs.map(async (slug) => {
+        const project = await getEntry("projects", slug);
+        if (!project) throw new Error(`Featured project not found: ${slug}`);
+        return project;
+    }),
+);
 ---
-
-<BaseLayout sideBarActiveItemID="home">
-    <div class="pb-12 mt-5">
-        <img src={url('favicon.svg')} alt="" class="w-24 h-24 mb-2" />
-        <div class="text-xl py-1">
-            Hey! You are under my watch! Beware of what you do here!
-        </div>
-        <div class="text-5xl font-bold">I'm Selene</div>
-
-        <div class="mt-10 space-y-3">
-            <div class="text-2xl font-bold">Notice Board</div>
-            <div class="text-lg">
-                This place is mostly harmless, lightly supervised, and full of
-                things I am still figuring out.
-            </div>
-            <div class="text-lg">
-                Projects are where I try to make ideas behave. Blog posts are
-                where I let them misbehave first.
-            </div>
-            <div class="text-lg">
-                Notes are for course thoughts, tiny discoveries, and future me
-                who will absolutely forget everything otherwise.
-            </div>
-            <div class="text-lg">
-                Try clicking WhatsApp. There's a surprise.
-            </div>
-        </div>
-
-        <div class="mt-12 grid gap-5 md:grid-cols-[220px_1fr] md:items-center">
-            <div class="rounded-ac-lg border border-base-300 bg-base-200/60 p-3">
-                <img
-                    src={url("tj11.jpg")}
-                    alt="Sweet Daisy the ginger cat"
-                    class="aspect-square w-full rounded-ac-lg object-cover"
-                />
-            </div>
-            <div class="space-y-3">
-                <div class="text-2xl font-bold">Meet my cat</div>
-                <div class="text-lg">
-                    His name is a mystery that no one fully agrees on.
-                </div>
-                <div class="text-lg">
-                    Want to know the true story? It is hiding under
-                    <a
-                        href={url("blog/")}
-                        class="font-bold underline decoration-dotted underline-offset-4"
-                    >
-                        blog
-                    </a>.
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-12 space-y-3">
-            <div class="text-2xl font-bold">A Brief Introduction</div>
-            <div class="text-xl">
-                I study machine learning systems at UCL, collect good questions,
-                and turn messy ideas into little working things. <br />
-                This is my corner for projects, notes, and whatever I am curious
-                enough to chase next.
-            </div>
-        </div>
-    </div>
+<BaseLayout>
+    <section class="career-section" aria-labelledby="about">
+        <h1 id="about">About Me</h1>
+        <p>I’m Selene Tan, an embedded software and firmware engineer with an MSc in Integrated Machine Learning Systems from UCL and a First Class BEng in Electronic and Electrical Engineering from Queen Mary University of London. I work with C, Python, STM32 and FreeRTOS, with experience in sensing, signal processing and machine learning.</p>
+        <p>I built a <a href={url("projects/stm32-freertos/")}>real-time STM32 system with FreeRTOS</a> and developed a <a href={url("projects/vision-language-model-certification/")}>framework for evaluating and certifying vision-language models</a>. I also built an <a href={url("projects/indoor-visible-light-positioning/")}>indoor positioning system using visible light</a> and processed LiDAR and image data for autonomous sailing and UAV-assisted navigation.</p>
+        <p>I’m seeking graduate and junior roles in the UK, primarily in embedded software and firmware. I’m also interested in software engineering, robotics, autonomous systems and applied machine learning. <a href={url("projects/")}>Explore my projects</a> or <a href={url("cv/")}>view my CV</a>.</p>
+        <p>Right to work in the UK. No visa sponsorship required.</p>
+    </section>
+    <CareerSections />
+    <section class="career-section" aria-labelledby="selected-projects">
+        <h2 id="selected-projects">Selected Projects</h2>
+        {featuredProjects.map(({ slug, data }) => (
+            <article class="career-entry">
+                <h3><a href={url(`projects/${slug}/`)}>{data.title}</a></h3>
+                <p>{data.description}</p>
+            </article>
+        ))}
+        <p><a href={url("projects/")}>View all projects</a></p>
+    </section>
 </BaseLayout>

@@ -1,0 +1,22 @@
+---
+import { type ProjectsSchema } from "../content/config";
+import { url } from "../config";
+
+interface Props {
+    slug: string;
+    data: ProjectsSchema;
+}
+
+const { slug, data } = Astro.props;
+---
+<article class="career-entry">
+    <div class="project-heading">
+        <h3><a href={url(`projects/${slug}/`)}>{data.title}</a></h3>
+        <p class="entry-meta">{[data.badge, data.period].filter(Boolean).join(" · ")}</p>
+    </div>
+    {data.cvBullets ? (
+        <ul class="project-bullets">
+            {data.cvBullets.map((bullet) => <li>{bullet}</li>)}
+        </ul>
+    ) : <p>{data.description}</p>}
+</article>

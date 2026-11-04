@@ -1,35 +1,31 @@
 ---
-import SideBarFooter from "./SideBarFooter.astro";
 import { Image } from "astro:assets";
-import SideBarMenu from "./SideBarMenu.astro";
-import { url } from "../config";
-const { sideBarActiveItemID } = Astro.props;
+import portrait from "../assets/selene-portrait.jpg";
+const contacts = [
+    { label: "Email", href: "mailto:selen.tanhanzi@gmail.com", icon: "M3 5h18v14H3z M3 6l9 7 9-7" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/selene-tan-85a311258/", icon: "M4 4h16v16H4z M8 11v6 M8 7v1 M12 17v-6 M12 13a2 2 0 014 0v4" },
+    { label: "GitHub", href: "https://github.com/SelenTan", filled: true, icon: "M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.49c-2.23.49-2.7-.95-2.7-.95-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.81.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.96 0-.88.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82a7.65 7.65 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.08-1.87 3.75-3.65 3.95.29.25.54.74.54 1.49v2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0Z" },
+];
 ---
-
-<div class="drawer-side z-40">
-    <label for="my-drawer" class="drawer-overlay"></label>
-    <aside
-        class="px-2 pt-2 h-auto min-h-full w-[19rem] bg-ac-cream-dark text-ac-text flex flex-col"
-    >
-        <div class="w-fit mx-auto mt-5 mb-6">
-            <a href={url('')}>
-                <div
-                    class="avatar transition ease-in-out hover:scale-[102%] block m-auto"
-                >
-                    <div class="w-[8.5rem] overflow-hidden">
-                        <Image
-                            class="mask mask-circle"
-                            format="webp"
-                            width={300}
-                            height={300}
-                            src={url('profile.jpg')}
-                            alt="Profile image"
-                        />
-                    </div>
-                </div>
-            </a>
-        </div>
-        <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
-        <SideBarFooter />
-    </aside>
-</div>
+<aside class="identity-sidebar" aria-label="Profile">
+  <div class="identity-content">
+    <div class="identity-portrait">
+        <Image src={portrait} alt="Selene Tan" width={800} />
+    </div>
+    <p class="identity-name">Selene Tan <span lang="zh-Hans">谭涵梓</span></p>
+    <p class="identity-affiliation">University College London</p>
+    <p>Embedded software and firmware</p>
+    <ul class="identity-links">
+        <li class="identity-location">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" /><circle cx="12" cy="10" r="2" /></svg>
+            London, UK
+        </li>
+        {contacts.map(({ href, label, icon, filled }) => (
+            <li><a href={href}>
+                <svg viewBox={filled ? "0 0 16 16" : "0 0 24 24"} width="20" height="20" fill={filled ? "currentColor" : "none"} stroke={filled ? "none" : "currentColor"} stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d={icon} /></svg>
+                {label}
+            </a></li>
+        ))}
+    </ul>
+  </div>
+</aside>

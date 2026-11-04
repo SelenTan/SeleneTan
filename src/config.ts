@@ -6,11 +6,10 @@ export const AUTHOR_NAME = "Selene";
 export const AUTHOR_INITIAL = "ST";
 export const SITE_DESCRIPTION = "Selene Tan's personal website.";
 export const GENERATE_SLUG_FROM_TITLE = true;
-export const TRANSITION_API = true;
 
 // Base path helper for GitHub Pages project sites
 // In dev: "/" — in prod with BASE_URL: "/im-watching-you/"
-const BASE_PATH = import.meta.env.BASE_URL;
+const BASE_PATH = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
 export const url = (path: string) => {
   const clean = path.replace(/^\//, "");
   return clean ? BASE_PATH + clean : BASE_PATH;

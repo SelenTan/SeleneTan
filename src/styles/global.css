@@ -167,3 +167,198 @@ h5,
 h6 {
   font-variation-settings: normal;
 }
+
+/* Profile layout and reading colours for the two device themes. */
+:root {
+  color-scheme: light;
+  --page-surface: oklch(98.9% 0.007 85);
+  --profile-surface: oklch(92.4% 0.024 89);
+  --reading-text: oklch(36% 0.017 179);
+  --reading-muted: oklch(45% 0.018 179);
+  --reading-link: oklch(43% 0.087 178);
+  --reading-rule: oklch(85% 0.018 89);
+}
+
+[data-theme="night"] {
+  color-scheme: dark;
+  --page-surface: oklch(23% 0.023 251);
+  --profile-surface: oklch(28% 0.028 251);
+  --reading-text: oklch(94% 0.012 85);
+  --reading-muted: oklch(79% 0.021 245);
+  --reading-link: oklch(82% 0.105 175);
+  --reading-rule: oklch(41% 0.03 251);
+}
+
+body {
+  background: var(--page-surface);
+  color: var(--reading-text);
+}
+
+.site-header {
+  grid-area: navigation;
+  background: var(--page-surface);
+  border-bottom: 1px solid var(--reading-rule);
+}
+
+.site-header nav {
+  padding-inline: var(--column-padding);
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: clamp(1rem, 2.7vw, 2.5rem);
+}
+
+.site-header a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-block: 0.8rem;
+  border-bottom: 3px solid transparent;
+  font-weight: 650;
+}
+
+.site-header a[aria-current="page"] {
+  color: var(--reading-link);
+  border-bottom-color: currentColor;
+}
+
+.site-shell {
+  --column-padding: clamp(1.25rem, 3vw, 3rem);
+  width: 100%;
+  min-height: 100svh;
+  background: color-mix(in oklch, var(--page-surface) 88%, var(--profile-surface));
+  display: grid;
+  grid-template-columns: clamp(14rem, 23%, 28rem) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "profile navigation" "profile content";
+}
+
+.site-shell-full {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "navigation" "content";
+}
+
+.identity-sidebar {
+  grid-area: profile;
+  background: var(--profile-surface);
+  border-inline-end: 1px solid var(--reading-rule);
+}
+
+.identity-content {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 2.5vw, 2.75rem) 2rem;
+}
+
+.identity-portrait {
+  position: relative;
+  width: clamp(7rem, 11vw, 11rem);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  outline: 1px solid var(--reading-rule);
+  outline-offset: 3px;
+}
+
+.identity-portrait img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 174%;
+  max-width: none;
+  height: auto;
+  transform: translate(-46%, -22%);
+}
+
+.identity-name {
+  margin-block: 1rem 0.5rem;
+  font-size: clamp(1.75rem, 2.4vw, 2.5rem);
+  font-weight: 800;
+  font-variation-settings: normal;
+  line-height: 1.25;
+}
+
+.identity-name [lang="zh-Hans"] { font-size: 0.8em; white-space: nowrap; }
+.identity-affiliation { margin-bottom: 0.9rem; }
+.identity-links { margin-top: 0.85rem; text-align: start; }
+.identity-links a, .identity-location { display: inline-flex; gap: 0.65rem; align-items: center; min-height: 44px; }
+.identity-location { color: var(--reading-muted); }
+
+.reading-column {
+  grid-area: content;
+  width: 100%;
+  min-width: 0;
+  padding: clamp(1.25rem, 3vw, 3rem) var(--column-padding);
+  overflow-wrap: anywhere;
+}
+
+.reading-column a, .identity-links a, .personal-social button {
+  color: var(--reading-link);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.career-section {
+  line-height: 1.65;
+}
+
+.career-section + .career-section {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--reading-rule);
+}
+
+.career-section h1, .career-section h2 {
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.career-section h1 { font-size: 2rem; }
+.career-section h2 { font-size: 1.55rem; }
+.career-section h3 { font-size: 1.12rem; font-weight: 800; }
+.career-section > p + p, .career-detail { margin-top: 0.75rem; }
+.career-entry { padding-block: 0.6rem; }
+.career-entry + .career-entry { border-top: 1px solid var(--reading-rule); }
+.career-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem 1.25rem; flex-wrap: wrap; }
+.career-heading > p, .entry-meta { color: var(--reading-muted); font-size: 0.92rem; }
+.project-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.25rem 1.25rem;
+}
+.project-heading .entry-meta { text-align: end; }
+.project-bullets { list-style: disc; padding-inline-start: 1.4rem; margin-block: 0.55rem 0.8rem; }
+.project-bullets li + li { margin-top: 0.25rem; }
+.skills-list { list-style: disc; padding-inline-start: 1.5rem; }
+.personal-cat { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-block: 1rem; }
+.personal-cat img { object-fit: cover; aspect-ratio: 1; border-radius: 1rem; }
+.personal-social button { min-height: 44px; margin-inline-start: 1rem; }
+.reading-column .prose { --tw-prose-body: var(--reading-text); --tw-prose-headings: var(--reading-text); --tw-prose-bold: var(--reading-text); --tw-prose-links: var(--reading-link); --tw-prose-quotes: var(--reading-text); --tw-prose-code: var(--reading-text); }
+:focus-visible { outline: 2px solid var(--reading-link); outline-offset: 3px; }
+.skip-link { position: absolute; left: 1rem; top: 0; z-index: 10; padding: 0.75rem; background: var(--page-surface); transform: translateY(-120%); }
+.skip-link:focus { transform: translateY(0); }
+
+@media (max-width: 48rem) {
+  .site-shell {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: "navigation" "profile" "content";
+  }
+  .site-shell-full {
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "navigation" "content";
+  }
+  .site-header nav { justify-content: flex-start; }
+  .identity-sidebar { border-inline-end: 0; }
+  .identity-content { position: static; min-height: 0; padding: 1.25rem; }
+  .identity-portrait { width: 4.5rem; }
+  .identity-name { margin-top: 0.5rem; font-size: 1.5rem; }
+  .identity-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 1rem; }
+  .project-heading { grid-template-columns: minmax(0, 1fr); }
+  .project-heading .entry-meta { text-align: start; }
+}

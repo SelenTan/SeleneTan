@@ -1,0 +1,37 @@
+---
+const { detailed = false } = Astro.props;
+---
+<section class="career-section" aria-labelledby="education">
+    <h2 id="education">Education</h2>
+    <div class="career-entry">
+        <div class="career-heading">
+            <h3>University College London</h3>
+            <p>Sep 2025 – Aug 2026</p>
+        </div>
+        <p>MSc Integrated Machine Learning Systems</p>
+        {detailed && <p>Coursework included applied machine learning, machine learning system design, natural language processing, security and privacy, and embedded design for IoT systems.</p>}
+    </div>
+    <div class="career-entry">
+        <div class="career-heading">
+            <h3>Queen Mary University of London</h3>
+            <p>Sep 2022 – Jun 2025</p>
+        </div>
+        <p>BEng Electronic and Electrical Engineering</p>
+        <p>First Class Honours</p>
+        {detailed && <p>Coursework included digital systems, C programming, microcontrollers, digital signal processing, communications and networking.</p>}
+    </div>
+</section>
+<section class="career-section" aria-labelledby="experience">
+    <h2 id="experience">Experience</h2>
+    <div class="career-entry">
+        <div class="career-heading">
+            <h3>Research Assistant</h3>
+            <p>Jun – Oct 2024</p>
+        </div>
+        <p>Tsinghua Shenzhen International Graduate School</p>
+        <p>Wind Energy and Autonomous Sailing Research Group, Shenzhen, China</p>
+        <p class="career-detail">Supported research on autonomous sailing vessels and UAV-assisted navigation, including route planning, visual sensing and environmental data collection.</p>
+        <p class="career-detail">Processed LiDAR and image data to associate observations with known landmarks and spatial locations.</p>
+        {detailed && <p class="career-detail">Contributed to early-stage multi-sensor processing for automated spatial alignment.</p>}
+    </div>
+</section>

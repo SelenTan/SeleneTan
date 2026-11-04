@@ -1,10 +1,15 @@
 ---
-title: "Indoor Visible Light Positioning System"
+title: "Angle-of-Arrival Indoor Localization with Visible Light"
+category: "Embedded systems & hardware"
+period: "Sep 2024 – Jun 2025"
 description: "A low-cost visible light positioning prototype using frequency-modulated LEDs, a rotating light sensor, Arduino control, and AoA-based position estimation."
 pubDate: "Apr 29 2026"
-heroImage: "/project1.jpg"
 badge: "graduation project"
 tags: ["embedded-systems", "positioning", "optical-signals"]
+cvBullets:
+  - "Designed an indoor positioning and navigation system using frequency coded LED light sources and a rotating photoelectric sensor to estimate robot position within a defined environment."
+  - "Developed embedded signal processing logic to identify individual light sources from measured optical frequencies and associate detections with known spatial coordinates."
+  - "Combined multi source position estimation with obstacle detection and path planning, enabling the robot to navigate towards a user defined target."
 ---
 
 This was my undergraduate graduation project at Queen Mary University of London.

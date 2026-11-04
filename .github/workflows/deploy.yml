@@ -38,7 +38,7 @@ jobs:
       - name: Build site
         run: pnpm build
         env:
-          BASE_URL: /im-watching-you/
+          BASE_URL: ${{ github.event.repository.name == format('{0}.github.io', github.repository_owner) && '/' || format('/{0}/', github.event.repository.name) }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
