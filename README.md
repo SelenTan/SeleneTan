@@ -1,60 +1,57 @@
-# Animal Crossing Personal Site Template
+# Selene Tan · 谭涵梓
 
-A cozy, Animal Crossing-themed personal website built with **Astro**, **TailwindCSS**, and **DaisyUI**. Features a warm cream palette, NookPhone-style sidebar navigation, light/dark mode, and charming rounded aesthetics.
+Personal portfolio for Selene Tan, an embedded software and firmware engineer. Built with Astro, Tailwind CSS, and DaisyUI.
 
-## Features
+[GitHub Pages address](https://selentan.github.io/im-watching-you/)
 
-- Animal Crossing visual style — warm colors, rounded shapes, 3D press-down buttons
-- Light (Day) and Dark (Night) themes with localStorage persistence
-- NookPhone-inspired sidebar with icon navigation
-- Theme-aware banner images (light/dark variants)
-- Blog, Notes, Projects, CV, and Personal pages
-- Markdown/MDX content with KaTeX math support
-- GitHub Pages deployment workflow included
-- Responsive — mobile drawer sidebar, desktop persistent sidebar
+## Site sections
 
-## Quick Start
+- **About Me** introduces my engineering background, education, and research experience. It also highlights four projects in STM32 and FreeRTOS firmware, visible-light positioning, PCB design, and vision-language model evaluation.
+- **Research & Engineering** groups 17 projects by technical area and links to their details.
+- **CV** brings together education, experience, project contributions, and technical skills.
+- **Blog** contains technical writing and has an RSS feed.
+- **Personal** contains stories and photo albums.
 
-### Prerequisites
+The site uses a profile sidebar on desktop and a single column on narrow screens. Light and dark themes follow the device preference.
 
-- [Node.js](https://nodejs.org/) 18+
-- [pnpm](https://pnpm.io/)
+## Run locally
 
-### Setup
+Use Node.js 20 and pnpm 9 to match the GitHub Actions environment.
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Start dev server
+pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Open `http://localhost:4321` in your browser.
-Deplyed site:https://selentan.github.io/im-watching-you/
-## Fonts
+Open [localhost:4321](http://localhost:4321/). To build and preview the production site locally, run:
 
-- **Latin text**: Nunito Variable (rounded, friendly)
-- **CJK text**: LXGW WenKai (霞鹜文楷)
+```bash
+pnpm build
+pnpm preview
+```
 
-Fonts are composed via CSS `@font-face` with `unicode-range` in `src/styles/global.css`.
+## Edit the content
 
-## Deployment (GitHub Pages)
+| Content | Location |
+| --- | --- |
+| Homepage copy and selected project order | [src/pages/index.astro](src/pages/index.astro) |
+| Sidebar portrait and contact links | [src/components/SideBar.astro](src/components/SideBar.astro) |
+| Education and experience shared by the homepage and CV | [src/components/CareerSections.astro](src/components/CareerSections.astro) |
+| Project titles, descriptions, CV bullets, and detail pages | [src/content/projects/](src/content/projects/) |
+| CV skills | [src/pages/cv.astro](src/pages/cv.astro) |
+| Blog and Personal posts | [src/content/blog/](src/content/blog/) and [src/content/personal/](src/content/personal/) |
 
-A GitHub Actions workflow is included at `.github/workflows/deploy.yml`.
+The homepage reads the selected projects by slug. Edit the project entries to update their titles or summaries across the site.
 
-1. Push your code to a `gh-pages` branch
-2. The workflow builds the site and deploys to GitHub Pages
-3. Set `BASE_URL` in the workflow to match your repo name (e.g., `/your-repo/`)
-4. Update `site` in `astro.config.mjs` to your GitHub Pages URL
+## GitHub Pages
 
-For a custom domain, add a `CNAME` file to `public/` and update the `site` field.
+Set **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. The [deployment workflow](.github/workflows/deploy.yml) runs on pushes to `main` and can also be triggered manually. It builds and publishes `dist/`.
+
+The workflow sets `BASE_URL` to the repository path for a project site or `/` for a repository named `<owner>.github.io`. The site origin is configured in [astro.config.mjs](astro.config.mjs).
 
 ## Credits
 
-- [Astro](https://astro.build/) — Static site framework
-- [TailwindCSS](https://tailwindcss.com/) + [DaisyUI](https://daisyui.com/) — Styling
-- [Animal Crossing](https://www.nintendo.com/us/store/products/animal-crossing-new-horizons-switch/) by Nintendo — Visual inspiration
-- [animal-crossing-ui](https://github.com/guokaigdg/animal-crossing-ui) — Design reference
-- [okpng nookphone icons](https://okpng.gumroad.com/) - Icon assets
-
+- [Astro](https://astro.build/) for the static site framework
+- [Tailwind CSS](https://tailwindcss.com/) and [DaisyUI](https://daisyui.com/) for styling
+- [Animal Crossing](https://www.nintendo.com/us/store/products/animal-crossing-new-horizons-switch/) by Nintendo and [animal-crossing-ui](https://github.com/guokaigdg/animal-crossing-ui) for visual inspiration
+- [okpng](https://okpng.gumroad.com/) for the NookPhone icon assets
